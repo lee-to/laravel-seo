@@ -17,15 +17,19 @@ class SeoManager
      */
     protected $seoData;
 
+    protected function getUri() {
+        return "/" . trim(request()->path(), "/");
+    }
+
     /**
      *
      */
     public function generate() {
-        if($redirect = Redirect::where(["url" => "/" . trim(request()->path(), "/")])->first()) {
+        if($redirect = Redirect::where(["url" => $this->getUri()])->first()) {
             redirect($redirect->to, $redirect->code)->send();
         }
 
-        $this->setSeo(SeoModel::where(["url" => request()->path()])->first());
+        $this->setSeo(SeoModel::where(["url" => $this->getUri()])->first());
     }
 
     /**

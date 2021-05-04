@@ -9,7 +9,7 @@
 - add seo template trait to model 
 
 ```php
-use Leeto\Seo\Traits\Seo" 
+use Leeto\Seo\Traits\Seo
 ```
 
 and call in controller
